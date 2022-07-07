@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import mysqlRepository from '../repository/mysql-repository'
 
 @Injectable()
 export class UsersService {
@@ -8,11 +9,12 @@ export class UsersService {
     return 'This action adds a new user';
   }
 
-  findAll() {
-    return `This action returns all users`;
+  findAll() {    
+    return mysqlRepository.selectAllUsers()
   }
 
   findOne(id: number) {
+    
     return `This action returns a #${id} user`;
   }
 
